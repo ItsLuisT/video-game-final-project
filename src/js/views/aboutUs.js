@@ -33,14 +33,13 @@ export const AboutUs = () => {
         <div className="card aboutUsCard">
           <img
             className="card-img-top"
-            src="https://www.traderjoes.com/content/dam/trjo/products/m20701/78963.png"
+            src="https://assets-prd.ignimgs.com/2022/01/26/team-fortress-2-button-1643168687556.jpg"
             alt="Card image cap"
           ></img>
           <div className="card-body">
-            <h5 className="card-title">Luis</h5>
+            <h5 className="card-title">Luis M Trelles</h5>
             <p className="card-text">
-              This card has supporting text below as a natural lead-in to
-              additional content.
+              Ph.D in Breathing. <br /> Worked several years in Desktop Support now looking to expand my field in Tech with Coding.
             </p>
           </div>
         </div>

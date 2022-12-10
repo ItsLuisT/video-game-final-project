@@ -6,15 +6,9 @@ import { Context } from "../store/appContext";
 
 
 export const Gamepicker = props => {
-	// const [query, setQuery] = useState("");
-	let searchProperties = {
-		search: "",
-		genre: "",
-		platform: "",
-		esrb_rating: ""
-	}
-	const [query, setQuery] = useState(searchProperties);
+
 	const { store, actions } = useContext(Context);
+	const [query, setQuery] = useState(store.searchProperties);
 	const [searchResults, setSearchResults] = useState([]);
 
 
@@ -50,9 +44,9 @@ export const Gamepicker = props => {
 		<div className="text-center mt-5">
 			<form className="d-flex">
 
-				<select className="form-select" name="genre">
-					<option onClick={() => req("genre", "")} value="Genre">Genres</option>
-					<option onClick={() => req("genre", "action")} value="Action">Action</option>
+				<select className="form-select" name="Genre">
+					<option onClick={() => req("genres", "")} value="Genre">Genres</option>
+					<option onClick={() => req("genres", "action")} value="Action">Action</option>
 					<option onClick={() => req("genres", "adventure")} value="Adventure">Adventure</option>
 					<option onClick={() => req("genres", "fighting")} value="Fighting">Fighting</option>
 					<option onClick={() => req("genres", "racing")} value="Racing">Racing</option>
@@ -68,28 +62,12 @@ export const Gamepicker = props => {
 					<option onClick={() => req("parent_platforms", "7")} value="Nintendo">Nintendo</option>
 				</select>
 
-				{/* ESRB Rating Refuses To Work!!! */}
-				<select className="form-select" name="ESRB-Rating">
-					<option onClick={() => req("esrb_rating", "")} value="Platform">ESRB Rating</option>
-					<option onClick={() => req("results", "1")} value="Everyone">Everyone</option>
-					<option onClick={() => req("esrb_rating", "2")} value="E-10">Everyone 10+</option>
-					<option onClick={() => req("esrb_rating", "3")} value="Teen">Teen</option>
-					<option onClick={() => req("esrb_rating", "4")} value="Mature">Mature</option>
-				</select>
-
 				<select className="form-select" name="Single-Or-Online">
 					<option onClick={() => req("tags", "")} value="Online-or-Multi">Number of Players</option>
 					<option onClick={() => req("tags", "singleplayer")} value="singleplayer">Singleplayer</option>
 					<option onClick={() => req("tags", "multiplayer")} value="multiplayer">Multiplayer</option>
 					<option onClick={() => req("tags", "cooperative")} value="coop">Coop</option>
 				</select>
-
-				<select className="form-select" name="VR Selector">
-				<input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked></input>
-  <label class="form-check-label" for="exampleRadios1">
-    Default radio
-  </label>
-				</select> 
 
 			</form>
 
