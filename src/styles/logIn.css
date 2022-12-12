@@ -1,0 +1,18 @@
+.container {
+    justify-content: center;
+    align-items: center;
+}
+.form {
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+
+}
+.text-center.mb-3 {
+    justify-content: center;
+    align-items: center;
+
+}
+.nav-link {
+    margin: 5px;
+}

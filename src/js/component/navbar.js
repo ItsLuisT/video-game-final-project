@@ -7,7 +7,7 @@ export const Navbar = () => {
     <nav className="navbar navbar-dark bg-dark">
       <div className="container">
         <Link to="/">
-            <h2 className="text-decoration-none link-light">
+            <h2 className="ion-nontext-decorate link-light">
               <i className="fa-solid fa-meteor mx-2"></i>Blue Comet Gaming
             </h2>
         </Link>
@@ -28,11 +28,16 @@ export const Navbar = () => {
               <h5>About Us</h5>
             </button>
           </Link>
-          <Link to="/">
+
+          {/* login */}
+
+          <Link to="/logIn">
             <button className="btn btn-primary">
-              <h5>Log in</h5>
+              <h5>Log In/Sign Up</h5>
             </button>
           </Link>
+
+
         </div>
       </div>
     </nav>
