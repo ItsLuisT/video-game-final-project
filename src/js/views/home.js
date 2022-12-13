@@ -22,15 +22,15 @@ import Gamepicker from "../component/gamepicker"
 
 export const Home = (props) => {
 	const [value, setValue] = useState(''); // creating state; user text inputs in real time
-	const [result, setResult] = useState([]); // stores what we get back in the array to render to the site
+	//const [result, setResult] = useState([]); // stores what we get back in the array to render to the site
 
 	const {store, actions} = useContext(Context)
 	//console.log(store.results)
 
-	useEffect(() => {
-		actions.datafetcher();
+	// useEffect(() => {
+	// 	actions.datafetcher();
 
-	}, [value]); // triggered not every render cycle, but only when value changes
+	// }, [value]); // triggered not every render cycle, but only when value changes
   
 	
 	return (
@@ -40,7 +40,7 @@ export const Home = (props) => {
 				<Gamepicker/>
 					{store.res.map((result, index) => ( // index will include key value
 						// <a href="#" key={index}>
-							<div className="searchEntry">
+							<div className="searchEntry" key={index}>
 								<div className="">
 									<img src={result.background_image} className="img-thumbnail rounded" />
 								</div>

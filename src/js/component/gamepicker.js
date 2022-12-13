@@ -6,46 +6,47 @@ import { Context } from "../store/appContext";
 
 
 export const Gamepicker = props => {
-	// const [query, setQuery] = useState("");
-	let searchProperties = {
-		search: "",
-		genre: "",
-		platform: "",
-		esrb_rating: ""
-	}
-	const [query, setQuery] = useState(searchProperties);
-	const { store, actions } = useContext(Context);
-	const [searchResults, setSearchResults] = useState([]);
+	const [genre, setGenre] = useState('');
+	const [platform, setPlatform] = useState('');
+	const [tags, seTtags] = useState('');
 
-	// useEffect(() => {
-	// 	actions.datafetcher()
-	// }, [store.searchProperties.genre]);
+	function genreChanger(value) {
+		setGenre(value)
+		actions.searchPropertiesChanger('genres', value)
+	}
+
+	//const [query, setQuery] = useState(searchProperties);
+	const { store, actions } = useContext(Context);
+	//const [searchResults, setSearchResults] = useState([]);
+
+	useEffect(() => {
+		actions.datafetcher()
+		console.log(store.searchProperties)
+	}, [genre, platform, tags]);
 	return (
 		<div className="text-center mt-5">
 			<form className="d-flex justify-content-evenly">
 
-				<select onChange={(e)=>(actions.searchPropertiesChanger('genre',e.target.value))}className="form-select" name="genre">
-					<option  value="Genre">Genres</option>
-					<option  value="Action">Action</option>
-					<option value="Adventure">Adventure</option>
-					<option  value="Fighting">Fighting</option>
-					<option value="Racing">Racing</option>
-					<option  value="RPG">RPG</option>
-					<option value="Platformer">Platformer</option>
+				<select onChange={(e)=>(genreChanger(e.target.value))}className="form-select" name="genre">
+					<option  value="">Genres</option>
+					<option  value="action">Action</option>
+					<option value="adventure">Adventure</option>
+					<option  value="fighting">Fighting</option>
+					<option value="racing">Racing</option>
+					<option  value="role-playing-games-rpg">RPG</option>
+					<option value="platformer">Platformer</option>
 				</select>
 
-				<select onChange={(e)=>(actions.searchPropertiesChanger('platform',e.target.value))} className="form-select" name="Platform">
-					<option  value="Platform">Platform</option>
-					<option  value="PC">PC</option>
-					<option  value="Playstation">Playstation</option>
-					<option value="Xbox">Xbox</option>
-					<option value="Nintendo">Nintendo</option>
+				<select onChange={(e)=>(actions.searchPropertiesChanger('parent_platforms',e.target.value))} className="form-select" name="Platform">
+					<option  value="">Platform</option>
+					<option  value="1">PC</option>
+					<option  value="2">Playstation</option>
+					<option value="3">Xbox</option>
+					<option value="7">Nintendo</option>
 				</select>
-
-		
 
 				<select onChange={(e)=>(actions.searchPropertiesChanger('tags',e.target.value))} className="form-select" name="Single-Or-Online">
-					<option  value="Online-or-Multi">Number of Players</option>
+					<option  value="">Number of Players</option>
 					<option value="singleplayer">Singleplayer</option>
 					<option  value="multiplayer">Multiplayer</option>
 					<option  value="coop">Coop</option>

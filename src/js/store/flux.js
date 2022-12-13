@@ -6,9 +6,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       searchProperties:
 			{
 				search: "",
-				genre: "",
-				platform: "",
-        tags: ""
+				genres: "",
+				parent_platforms: "",
+        		tags: ""
 			},
       res: [
 				{
@@ -9899,6 +9899,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         let store = getStore()
         console.log("Datafetcher Function called")
 				for (const property in store.searchProperties) {
+					
           console.log('Property is ' + property + ' value is ' +store.searchProperties[property])
 					if (store.searchProperties[property] != '') {
 						query = query + '&' + property + '=' + store.searchProperties[property]
@@ -9933,10 +9934,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       searchPropertiesChanger: (prop, value) => {
         const store = getStore()
+		//value.replace(' ', '-');
         console.log('searchPropertiesChanger function called. ' + 'Prop is ' + prop +' VALUE OF SEARCH: ' + value)
         store.searchProperties[prop] = value;
         setStore({store: store})
-
+		const action = getActions()
+		action.datafetcher()
         // value = "&" + value
       //   fetch(
       //     `https://api.rawg.io/api/games?key=bfe242c109884e06860a295ba9f3a547${value}`
